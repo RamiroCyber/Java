@@ -1,0 +1,98 @@
+package vetor;
+
+import java.util.Locale;
+import java.util.Scanner;
+
+public class ProgramProduto {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		Locale.setDefault(Locale.US);
+		
+		Produtos[] vect = new Produtos[4];
+		
+		System.out.println("Armazene os dados dos 4 produtos que deseja comprar ");
+		System.out.println();
+		
+		for(int i = 0; i< 4;i++) {
+			
+			System.out.println("Nome do produto: ");
+			String nome = sc.nextLine();
+			System.out.println("Digite o valor do produto: ");
+			double valor = sc.nextDouble();
+			System.out.println("Digite a quantidade do produto");
+			int quantidade = sc.nextInt(); 
+			vect[i] = new Produtos(nome, valor, quantidade);
+			sc.nextLine();
+			System.out.println(vect[i]);
+			System.out.println();
+		}
+		
+		
+			double somaValor = 0.0;
+			for(int i = 0;i<4;i++) {
+			  somaValor += vect[i].getValor(); 
+			}
+			int quanTotal = 0;
+			for(int i = 0;i<4;i++) {
+			  quanTotal += vect[i].getQuantidade(); 
+			}
+		
+			System.out.println("Quantidade total dos produtos: "+ quanTotal+" Valor total dos produtos: "+somaValor);
+		
+		
+		
+		
+		
+		sc.close();
+
+	}
+
+}
+
+
+//Classe Produtos
+package vetor;
+
+public class Produtos {
+	private String nome;
+	private double valor;
+	private int quantidade;
+	
+	public Produtos(String nome, double valor, int quantidade) {
+		this.nome = nome;
+		this.valor = valor;
+		this.quantidade = quantidade;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public double getValor() {
+		return valor;
+	}
+
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+	
+	public String toString() {
+		return getNome()+", "+getValor()+", "+getQuantidade();
+	}
+	
+	
+	
+}
