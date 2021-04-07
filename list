@@ -1,0 +1,118 @@
+package listas;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Scanner;
+
+public class Programa {
+
+	public static void main(String[] args) {
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+		
+		
+		List<Empregados> list = new ArrayList<>();
+		
+		System.out.println("Quantidade de empregados que deseja cadastrar: ");
+		int quantEmpregados = sc.nextInt();
+		
+		for(int i=0; i<quantEmpregados;i++) {
+			System.out.println();
+			System.out.print("ID: ");
+			int id = sc.nextInt();
+			System.out.print("Nome: ");
+			sc.nextLine();
+			String nome = sc.nextLine();
+			System.out.print("Sálario: ");
+			double salario = sc.nextDouble();
+			Empregados empreg = new Empregados(id,nome,salario);
+			list.add(empreg);
+		}
+		
+		System.out.println("Digite o ID do funcionário que ira receber aumento: ");
+		int idAumento = sc.nextInt();
+		Empregados empreg = list.stream().filter(x -> x.getId()== idAumento).findFirst().orElse(null);
+		if(empreg != null) {
+			System.out.println("Porcentagem a ser adicionada: ");
+				Double aumentovalor =sc.nextDouble();
+				empreg.aumentarSalario(aumentovalor);;
+				
+		}else {
+			System.out.println("Id Inválido!!");
+		}
+		
+		for(Empregados x : list) {
+			System.out.println(x);
+		}
+		
+		
+		
+		sc.close();
+
+	}
+
+	
+
+}
+
+//classe de empregado
+
+package listas;
+
+public class Empregados {
+	private Integer id;
+	private String nome;
+	private Double salario;
+	
+	public Empregados(Integer id, String nome, Double salario) {
+		
+		this.id = id;
+		this.nome = nome;
+		this.salario = salario;
+	}
+	
+	
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+
+	public String getNome() {
+		return nome;
+	}
+
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+	public Double getSalario() {
+		return salario;
+	}
+
+
+	public void setSalario(Double salario) {
+		this.salario = salario;
+	}
+
+	public void aumentarSalario(double aumento) {
+		this.salario += this.salario * aumento / 100;
+	}
+
+
+	public String toString() {
+		return "ID: "+getId()+" Nome: "+ getNome()+" Sálario: " + getSalario();
+	}
+	
+	
+	
+	
+}
+
