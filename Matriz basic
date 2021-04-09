@@ -1,0 +1,40 @@
+package ex;
+
+import java.util.Locale;
+import java.util.Scanner;
+
+public class ExMatrix {
+
+	public static void main(String[] args) {
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Digite a quantidade de linhas e coluas:");
+		int linhas = sc.nextInt();
+		int colunas = sc.nextInt();
+		int[][] mat = new int[linhas][colunas];
+		
+		for(int i=0; i<mat.length;i++) {
+			for(int j=0; j<mat[i].length;j++) {
+				mat[i][j] = sc.nextInt();
+			}
+		}
+		System.out.println("Digite o valor que deseja procurar: ");
+		int x = sc.nextInt();
+		for(int i=0;i<mat.length;i++){
+			for(int j=0;j<mat[i].length;j++) {
+				if(x == mat[i][j]) {
+					System.out.println("O valor esta na posição "+i+","+j);
+				}
+			}
+		}
+		
+		
+				
+		
+	
+		sc.close();
+
+		
+	}
+}
